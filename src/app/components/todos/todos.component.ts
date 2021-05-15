@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from './../../models/Todo';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-todos',
@@ -9,6 +10,7 @@ import { Todo } from './../../models/Todo';
 export class TodosComponent implements OnInit {
 
   todos:Todo[] = [];
+  inputTodo:string = "";
 
   constructor() { }
 
@@ -42,6 +44,14 @@ export class TodosComponent implements OnInit {
     //   return i != id;
     // });
     this.todos = this.todos.filter((item, i) => i != id);
+  }
+
+  addTodo() {
+    this.todos.push({
+      content: this.inputTodo,
+      completed: false
+    });
+    this.inputTodo = "";
   }
 
 }
